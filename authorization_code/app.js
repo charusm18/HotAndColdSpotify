@@ -13,8 +13,8 @@ var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 
-var client_id = 'ENTER HERE'; // Your client id
-var client_secret = 'ENTER HERE'; // Your secret
+var client_id = ''; // Your client id
+var client_secret = ''; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 /**
@@ -46,7 +46,7 @@ app.get('/login', function(req, res) {
   res.cookie(stateKey, state);
 
   // your application requests authorization
-  var scope = 'user-read-private user-read-email';
+  var scope = 'user-read-private user-read-email user-top-read';
   res.redirect('https://accounts.spotify.com/authorize?' +
     querystring.stringify({
       response_type: 'code',
@@ -98,9 +98,35 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
+        var artists = {
+          url: 'https://api.spotify.com/v1/me/top/artists',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+
+        var tracks = {
+          url: 'https://api.spotify.com/v1/me/top/tracks',
+          headers: { 'Authorization': 'Bearer ' + access_token },
+          json: true
+        };
+
         // use the access token to access the Spotify Web API
         request.get(options, function(error, response, body) {
-          console.log(body);
+            console.log(body);
+        });
+
+        request.get(artists, function(error, response, body) {
+          var i;
+          for (i = 0; i < body["items"].length; i++) {
+            console.log(body["items"][i]["album"]);
+          }
+        });
+
+        request.get(tracks, function(error, response, body) {
+          var i;
+          for (i = 0; i < body["items"].length; i++) {
+            console.log(body["items"][i]["album"]);
+          }
         });
 
         // we can also pass the token to the browser to make requests from there
