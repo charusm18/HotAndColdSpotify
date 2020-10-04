@@ -1,7 +1,7 @@
 /**
  * getMatches() returns the dictionary
  * {hotMatch, hotPercentMatch, coldMatch, coldPercentMatch}
- * @param {*} userDict formatted as output of createDatabaseDict()
+ * @param {dict} userDict formatted as output of createDatabaseDict()
  */
 async function getMatches(userDict) {
   const { MongoClient } = require('mongodb');
