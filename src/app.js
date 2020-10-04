@@ -112,21 +112,59 @@ app.get('/callback', function(req, res) {
 
         // use the access token to access the Spotify Web API
         request.get(options, function (error, response, body) {
-          console.log(body);
+          var user_info = {};
+          user_info["displayName"] = body["display_name"];
+          user_info["profilePic"] = body["images"][0]["url"];
+          user_info["userUrl"] = body["external_urls"]["spotify"];
+
+          console.log(user_info);
+
         });
 
         request.get(artists, function (error, response, body) {
+          var artist_list = []
+          var genre_list = []
           var i;
           for (i = 0; i < body["items"].length; i++) {
-            console.log(body["items"][i]["album"]);
+            var dict = {};
+            dict["artistName"] = body["items"][i]["name"];
+            dict["artistPic"] = body["items"][i]["images"][0]["url"];
+            dict["artistUrl"] = body["items"][i]["external_urls"]["spotify"];
+
+            artist_list[i] = dict;
+            
+            var j = 0;
+            artist_genres = body["items"][i]["genres"];
+            while(genre_list.includes(artist_genres[j]) && j < artist_genres.length){
+              j++;
+            }
+            if(artist_genres[j] != undefined) // incase all the genres of at artist has been seen before
+              genre_list.push(artist_genres[j]);
           }
+          console.log(artist_list);
+          console.log(genre_list);
         });
 
         request.get(tracks, function (error, response, body) {
+          var songs_list = []
           var i;
           for (i = 0; i < body["items"].length; i++) {
-            console.log(body["items"][i]["album"]);
+            var dict = {};
+            dict["songName"] = body["items"][i]["name"];
+            dict["songPicture"] = body["items"][i]["album"]["images"][0]["url"];
+            dict["songUrl"] = body["items"][i]["external_urls"]["spotify"];
+
+            var artists = [];
+            var j;
+            for(j = 0; j < body["items"][i]["artists"].length; j++){
+              artists.push(body["items"][i]["artists"][j]["name"])
+            }
+            
+            dict["songArtists"] = artists; 
+
+            songs_list.push(dict);
           }
+          console.log(songs_list);
         });
 
         // we can also pass the token to the browser to make requests from there

@@ -40,6 +40,33 @@ header{
     color: white;
     font-size: 70px;
 }
+.container{
+    display:block;
+}
+.wrapper{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+    text-align: center;
+}
+.spotify-login{
+    margin:0 auto;
+    display:block;
+    font-family: dm-medium;
+    margin-top: 24px;
+    color: white;
+    text-decoration: none;
+    background-color: #1DB954; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 38px;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 100px;
+    letter-spacing: 2px;
+    text-align: center;
+}
 footer{
     font-family: dm-regular;
     color: white;
@@ -51,7 +78,7 @@ footer{
     height: 4.5rem;
 }
 .tag{
-    padding-top: 24px;
+    /* padding-top: 10px; */
     text-align: center;
 }
 .tag p{
