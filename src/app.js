@@ -111,18 +111,18 @@ app.get('/callback', function(req, res) {
         };
 
         // use the access token to access the Spotify Web API
-        request.get(options, function(error, response, body) {
-            console.log(body);
+        request.get(options, function (error, response, body) {
+          console.log(body);
         });
 
-        request.get(artists, function(error, response, body) {
+        request.get(artists, function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
             console.log(body["items"][i]["album"]);
           }
         });
 
-        request.get(tracks, function(error, response, body) {
+        request.get(tracks, function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
             console.log(body["items"][i]["album"]);
