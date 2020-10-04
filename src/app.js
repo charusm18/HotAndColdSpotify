@@ -10,7 +10,6 @@
 const match = require('./match');
 
 var express = require('express'); // Express web server framework
-var router = express.Router();
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
@@ -18,13 +17,13 @@ var cookieParser = require('cookie-parser');
 const { json, Router } = require('express');
 
 var client_id = 'df9043305ece4ffca058fc21df83e5ea'; // Your client id
-var client_secret = 'a780f955e5f849fe98478aeabef4f716'; // Your secret
+var client_secret = '4a5de4500fb84215b007a61977734c8f'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
-var user_info = {}; //user info
-var artist_list = [];
-var genre_list = [];
-var songs_list = [];
+var user_info = {}; //dictionary that holds user information
+var artist_list = []; //list of dictionaries that holds a list of a user's top artists and info about that artists
+var genre_list = []; //list of your top genres
+var songs_list = []; //list of your top songs
 
 
 /**
@@ -52,6 +51,9 @@ app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser());
 
+  /**
+   * GET request of login through spotify and get user authentication
+   */
 app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
@@ -69,13 +71,16 @@ app.get('/login', function (req, res) {
     }));
 });
 
-////////////////////////////// callback function ///////////////////////////////////////////////////
 
+/**
+ * GET request for the callback function to use the Spotify Web APIs and 
+ * get user data from Spotify libraries (User Information, Personalization
+ * Artist, Personalization Tracks)
+ */
 app.get('/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
-
   var code = req.query.code || null;
   var state = req.query.state || null;
   var storedState = req.cookies ? req.cookies[stateKey] : null;
@@ -101,6 +106,8 @@ app.get('/callback', function (req, res) {
     };
 
     request.post(authOptions, function (error, response, body) {
+      
+      //if we have a valid authentication code, get data
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
@@ -124,15 +131,14 @@ app.get('/callback', function (req, res) {
           json: true
         };
 
-        //populates the 
+        //populates the user_info with relavent information from JSON
         request.get(options, function (error, response, body) {
-
           user_info["displayName"] = body["display_name"];
           user_info["profilePic"] = body["images"][0]["url"];
           user_info["userUrl"] = body["external_urls"]["spotify"];
         });
 
-        //
+        //populates the genre_list and artist_list with relavent information from JSON
         request.get(artists, function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
@@ -154,6 +160,7 @@ app.get('/callback', function (req, res) {
 
         });
 
+        //populates the song_list with relavent information from JSON
         request.get(tracks, async function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
@@ -169,7 +176,6 @@ app.get('/callback', function (req, res) {
             }
 
             dict["songArtists"] = artists;
-
             songs_list.push(dict);
           }
 
@@ -192,8 +198,9 @@ app.get('/callback', function (req, res) {
 });
 
 
-////////////////////////////////////////////////////////////////////////////////////////////
-
+/**
+ * GET request for the request token, not really used in this application
+ */
 app.get('/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
@@ -219,18 +226,22 @@ app.get('/refresh_token', function (req, res) {
 
 });
 
-//server.js
+/**
+ * POST request to get the Dictionary matches and send to frontEnd; takes no 
+ * inputs since everything needed is stored in global variables
+ */
 app.post('/dictionary-matches',async function(req,res){
-
-  // the message being sent back will be saved in a localSession variable
-  // send back a couple list items to be added to the DOM
-  console.log("in post request")
+  
+  //creates a dictionary with user's data
   userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
+  
+  //creates a dictionary with the user's hot matches, cold matches, and percentages
   matchDict = await match.getMatches(userDict);
-  //matchesAsJson = JSON.stringify(matchDict);
+  
+  //creates a dictionary that includes the data, and sucess variable to indicate sucess
   input = {data: matchDict, success: true};
-  console.log(input)
-  res.send(input);
+
+  res.send(input); //sends input to url
 
 });
 

@@ -127,6 +127,24 @@
               $('#loggedin').show();
             }
           });
+          $.ajax({
+                 url: '/dictionary-matches',
+                 method:'POST',
+                 data: {list: "some info"}
+               }).done(function(data){
+                   //if we have a successful post request ... 
+                   if(data.success){
+                        console.log(data);
+                        hotPercentMatch = data.data.hotPercentMatch;
+                        console.log(hotPercentMatch);
+                       return;
+                   }
+               }).fail(function(){
+                  //do nothing ....
+                   console.log('failed...');
+                   return;
+               });
+          
   
         } else {
           // render initial screen
