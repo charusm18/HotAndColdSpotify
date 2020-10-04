@@ -12,35 +12,312 @@
 
   <!-- before getting authentication from Spotify login -->
   <div class="container">
-    <header>Hot<span style="color: #1DB954">&</span>Cold</header>
-
-    <div class="wrapper">
-      <div class="tag">
-        <p>Who’s your music taste twin and who’s your polar opposite?</p>
-      </div>
-      <div id="login">
-        <a href="/login" class="spotify-button">LOG IN WITH SPOTIFY</a>
+    <div id="login">
+      <div class="wrapper">
+        <header>Hot<span style="color: #1DB954">&</span>Cold</header>
+        <div class="tag">
+          <p>Who’s your music taste twin and who’s your polar opposite?</p>
+          <a href="/login" class="spotify-button">LOG IN WITH SPOTIFY</a>
+        </div>
       </div>
     </div>
-    <!-- <div id="login">
-      <a href="/login" class="spotify-login">LOG IN WITH SPOTIFY</a>
-    </div> -->
 
-
-    <div id="loggedin">
-      <div id="user-profile">
+      <div id="loggedin">
+        <div id="user-profile">
+        </div>
+        <div id="oauth">
+        </div>
+        <!-- <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+        <button class="trigger">Trigger Change</button> -->
       </div>
-      <div id="oauth">
-      </div>
-      <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
-      <button class="trigger">Trigger Change</button>
     </div>
-  </div>
 
 
-  <!-- page that loads after getting authentication from spotify -->
-  <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{hotPercentMatch}}</h1>
+    <!-- page that loads after getting authentication from spotify -->
+    <script id="user-profile-template" type="text/x-handlebars-template">
+    <body id="main">
+      <div class="wrapper">
+          <div class="beg">
+              <header id="main">Hot<span style="color: #1DB954">&</span>Cold</header>
+              <p class="des">has generated your music taste matches!</p>
+              <div class="arrow">
+                  <img class="down-arrow" src="images/down-arrow.png">
+                  <p>MEET YOUR MATCHES</p>
+              </div>
+          </div>
+  
+          <!--     HOT     -->
+          <div class="hot">
+              <img class="icon" src="images/fire.png">
+              <p class="subheading">HOTTEST MATCH</p>
+              <p class="match">98% FIT</p>
+  
+              <div class="square">
+                  <img class="profile-pic" alt="profile" src="images/person2.jpeg">
+              </div>
+  
+              <a href="#" id="profile-button" class="spotify-button">JAMIE WALKER</a>
+  
+              <div class="section">
+                  <h2>How Your Top Genres Compare</h2>
+                  <div class="compare-genres">
+                      <div class="prof-left">
+                          <img class="profile-pic-sm" src="images/person2.jpeg">
+                      </div>
+                      <div class="genre-grid-container">
+                          <div class="genre-item" id="green">1 ⋅ POP</div>
+                          <div class="genre-item" id="green">1 ⋅ POP</div>
+                          <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
+                          <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
+                          <div class="genre-item" id="red">3 ⋅ POP RAP</div>
+                          <div class="genre-item" id="yellow">3 ⋅ DANCE POP</div>
+                          <div class="genre-item" id="red">4 ⋅ MODERN ROCK</div>
+                          <div class="genre-item" id="red">4 ⋅ INDIE</div>
+                          <div class="genre-item" id="yellow">5 ⋅ DANCE POP</div>
+                          <div class="genre-item" id="red">5 ⋅ RAP</div>
+                      </div>
+                      <div class="prof-right">
+                          <img class="profile-pic-sm" src="images/person3.jpg">
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="section">
+                  <h2>Jamie's Top 10 Songs</h2>
+                  <div class="song-grid-container">
+                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="#" id="profile-button" class="spotify-button">CREATE PLAYLIST</a>
+              </div>
+  
+              <div class="section">
+                  <h2>Top Artists You Have in Common</h2>
+                  <div class="artist-grid-container">
+                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
+                      <div class="artist-item">
+                          <img src="images/troye.jpg" class="artist-pic">
+                          <p class="artist-name">TROYE SIVAN</p>
+                      </div>
+                      <div class="artist-item">
+                          <img src="images/niki.jpg" class="artist-pic">
+                          <p class="artist-name">NIKI</p>
+                      </div>
+                      <div class="artist-item">
+                          <img src="images/hippo.jpeg" class="artist-pic">
+                          <p class="artist-name">HIPPO CAMPUS</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+  
+          <!--   COLD   -->
+          <div class="cold">
+              <img class="icon" src="images/ice.png">
+              <p class="subheading" id="cold-text">COLDEST MATCH</p>
+              <p class="match">12% FIT</p>
+  
+              <div class="square">
+                  <img class="profile-pic" alt="profile" src="images/man.jpg">
+              </div>
+  
+              <a href="#" id="profile-button" class="spotify-button">DAVID JAMES</a>
+  
+              <div class="section">
+                  <h2 id="cold-text">How Your Top Genres Compare</h2>
+                  <div class="compare-genres">
+                      <div class="prof-left">
+                          <img class="profile-pic-sm" src="images/man.jpg">
+                      </div>
+                      <div class="genre-grid-container">
+                          <div class="genre-item" id="green">1 ⋅ POP</div>
+                          <div class="genre-item" id="green">1 ⋅ POP</div>
+                          <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
+                          <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
+                          <div class="genre-item" id="red">3 ⋅ POP RAP</div>
+                          <div class="genre-item" id="yellow">3 ⋅ DANCE POP</div>
+                          <div class="genre-item" id="red">4 ⋅ MODERN ROCK</div>
+                          <div class="genre-item" id="red">4 ⋅ INDIE</div>
+                          <div class="genre-item" id="yellow">5 ⋅ DANCE POP</div>
+                          <div class="genre-item" id="red">5 ⋅ RAP</div>
+                      </div>
+                      <div class="prof-right">
+                          <img class="profile-pic-sm" src="images/person3.jpg">
+                      </div>
+                  </div>
+              </div>
+  
+              <div class="section">
+                  <h2 id="cold-text">Jamie's Top 10 Songs</h2>
+                  <div class="song-grid-container">
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                      <div class="song-item" id="cold-card">
+                          <img src="images/boy.jpg" class="song-pic">
+                          <div class="song-info" id="cold-text-black">
+                              <p class="song-title">Dance, Baby!</p>
+                              <p class="song-artist">BOY PABLO</p>
+                          </div>
+                      </div>
+                  </div>
+                  <a href="#" id="profile-button" class="spotify-button">CREATE PLAYLIST</a>
+              </div>
+  
+              <div class="section">
+                  <h2 id="cold-text">Top Artists You Have in Common</h2>
+                  <div class="artist-grid-container">
+                      <div class="artist-item">
+                          <img src="images/troye.jpg" class="artist-pic">
+                          <p class="artist-name">TROYE SIVAN</p>
+                      </div>
+                      <div class="artist-item">
+                          <img src="images/niki.jpg" class="artist-pic">
+                          <p class="artist-name">NIKI</p>
+                      </div>
+                      <div class="artist-item">
+                          <img src="images/hippo.jpeg" class="artist-pic">
+                          <p class="artist-name">HIPPO CAMPUS</p>
+                      </div>
+                  </div>
+              </div>
+        </div>
+    </div>
+  
+      <!-- <footer>
+          Made with ☕ by Cristie, Charu, and Margaret // ©2020
+      </footer> -->
+  </body>
+      <!-- <h1>Logged in as {{hotPercentMatch}}</h1>
       <div class="media">
         <div class="pull-left">
           <img class="media-object" width="150" src="{{images.0.url}}" />
@@ -58,140 +335,140 @@
             
           </dl>
         </div>
-      </div>
+      </div> -->
     </script>
 
 
-  <!-- prints out the access tokens -->
-  <script id="oauth-template" type="text/x-handlebars-template">
-      <h2>oAuth info</h2>
+    <!-- prints out the access tokens -->
+    <script id="oauth-template" type="text/x-handlebars-template">
+      <!-- <h2>oAuth info</h2>
       <dl class="dl-horizontal">
         <dt>Access token</dt><dd class="text-overflow">{{access_token}}</dd>
         <dt>Refresh token</dt><dd class="text-overflow">{{refresh_token}}</dd>
-      </dl>
+      </dl> -->
     </script>
 
-  <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
-  <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
-  <script>
-    (function () {
+    <script src="//cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0-alpha.1/handlebars.min.js"></script>
+    <script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
+    <script>
+      (function () {
 
-      /**
-       * Obtains parameters from the hash of the URL
-       * @return Object
-       */
-      function getHashParams() {
-        var hashParams = {};
-        var e, r = /([^&;=]+)=?([^&;]*)/g,
-          q = window.location.hash.substring(1);
-        while (e = r.exec(q)) {
-          hashParams[e[1]] = decodeURIComponent(e[2]);
+        /**
+         * Obtains parameters from the hash of the URL
+         * @return Object
+         */
+        function getHashParams() {
+          var hashParams = {};
+          var e, r = /([^&;=]+)=?([^&;]*)/g,
+            q = window.location.hash.substring(1);
+          while (e = r.exec(q)) {
+            hashParams[e[1]] = decodeURIComponent(e[2]);
+          }
+          return hashParams;
         }
-        return hashParams;
-      }
 
-      var userProfileSource = document.getElementById('user-profile-template').innerHTML,
-        userProfileTemplate = Handlebars.compile(userProfileSource),
-        userProfilePlaceholder = document.getElementById('user-profile');
+        var userProfileSource = document.getElementById('user-profile-template').innerHTML,
+          userProfileTemplate = Handlebars.compile(userProfileSource),
+          userProfilePlaceholder = document.getElementById('user-profile');
 
-      var oauthSource = document.getElementById('oauth-template').innerHTML,
-        oauthTemplate = Handlebars.compile(oauthSource),
-        oauthPlaceholder = document.getElementById('oauth');
+        var oauthSource = document.getElementById('oauth-template').innerHTML,
+          oauthTemplate = Handlebars.compile(oauthSource),
+          oauthPlaceholder = document.getElementById('oauth');
 
-      var params = getHashParams();
+        var params = getHashParams();
 
-      var access_token = params.access_token,
-        refresh_token = params.refresh_token,
-        error = params.error;
-      var hotPercentMatch;
+        var access_token = params.access_token,
+          refresh_token = params.refresh_token,
+          error = params.error;
+        var hotPercentMatch;
 
-      if (error) {
-        alert('There was an error during the authentication');
-      } else {
-        if (access_token) {
-          // render oauth info
-          oauthPlaceholder.innerHTML = oauthTemplate({
-            access_token: access_token,
-            refresh_token: refresh_token
-          });
-
-          $.ajax({
-            url: 'https://api.spotify.com/v1/me',
-            headers: {
-              'Authorization': 'Bearer ' + access_token
-            },
-            success: function (response) {
-              userProfilePlaceholder.innerHTML = userProfileTemplate(response);
-
-              $('#login').hide();
-              $('#loggedin').show();
-            }
-          });
-  
+        if (error) {
+          alert('There was an error during the authentication');
         } else {
-          // render initial screen
-          $('#login').show();
-          $('#loggedin').hide();
-        }
-      
-        document.getElementById('obtain-new-token').addEventListener('click', function () {
-          $.ajax({
-            url: '/refresh_token',
-            data: {
-              'refresh_token': refresh_token
-            }
-          }).done(function (data) {
-            access_token = data.access_token;
+          if (access_token) {
+            // render oauth info
             oauthPlaceholder.innerHTML = oauthTemplate({
               access_token: access_token,
               refresh_token: refresh_token
             });
-          });
-        }, false);    
-      
-      }
 
-    })();
-  </script>
+            $.ajax({
+              url: 'https://api.spotify.com/v1/me',
+              headers: {
+                'Authorization': 'Bearer ' + access_token
+              },
+              success: function (response) {
+                userProfilePlaceholder.innerHTML = userProfileTemplate(response);
+
+                $('#login').hide();
+                $('#loggedin').show();
+              }
+            });
+
+          } else {
+            // render initial screen
+            $('#login').show();
+            $('#loggedin').hide();
+          }
+
+          // document.getElementById('obtain-new-token').addEventListener('click', function () {
+          //   $.ajax({
+          //     url: '/refresh_token',
+          //     data: {
+          //       'refresh_token': refresh_token
+          //     }
+          //   }).done(function (data) {
+          //     access_token = data.access_token;
+          //     oauthPlaceholder.innerHTML = oauthTemplate({
+          //       access_token: access_token,
+          //       refresh_token: refresh_token
+          //     });
+          //   });
+          // }, false);
+
+        }
+
+      })();
+    </script>
 
 
-<script>
+    <script>
 
-   //change DOM function
-   function changeDom(){
-       //ajax call
+      //change DOM function
+      function changeDom() {
+        //ajax call
         $.ajax({
-                 url: '/dictionary-matches',
-                 method:'POST',
-                 data: {list: "some info"}
-               }).done(function(data){
-                   //if we have a successful post request ... 
-                   if(data.success){
-                        console.log(data);
-                        hotPercentMatch = data.data.hotPercentMatch;
-                        console.log(hotPercentMatch);
-                       return;
-                   }
-               }).fail(function(){
-                  //do nothing ....
-                   console.log('failed...');
-                   return;
-               });
-       };
+          url: '/dictionary-matches',
+          method: 'POST',
+          data: { list: "some info" }
+        }).done(function (data) {
+          //if we have a successful post request ... 
+          if (data.success) {
+            console.log(data);
+            hotPercentMatch = data.data.hotPercentMatch;
+            console.log(hotPercentMatch);
+            return;
+          }
+        }).fail(function () {
+          //do nothing ....
+          console.log('failed...');
+          return;
+        });
+      };
 
-   //trigger change DOM  function
-   $('.trigger').click(function(){
-       changeDom();
-   });
+      //trigger change DOM  function
+      $('.trigger').click(function () {
+        changeDom();
+      });
 
-</script>
-
-
+    </script>
 
 
-  <footer>
-    Made with ☕ by Cristie, Charu, and Margaret // ©2020
-  </footer>
+
+
+    <footer>
+      Made with ☕ by Cristie, Charu, and Margaret // ©2020
+    </footer>
 </body>
 
 

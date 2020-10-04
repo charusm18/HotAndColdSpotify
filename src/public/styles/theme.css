@@ -65,6 +65,7 @@ h2{
     width: 100%;
     text-align: center;
     display: block;
+    padding-bottom: 170px;
 }
 .arrow{
     display: block;
@@ -203,7 +204,7 @@ p{
     width: 55%;
     margin: 0 auto;
     grid-template-columns: auto auto;
-    grid-column-gap: 20px;
+    grid-column-gap: 30px;
     grid-row-gap: 10px;
     padding-bottom: 30px;
     padding-top: 20px;
@@ -282,6 +283,9 @@ p{
     border-radius: 50%;
     filter: drop-shadow(0px 0px 10px #69AF82);
 }
+.square{
+    padding-top: 30px;
+}
 .icon{
     padding-top: 100px;
     width: 50px;
@@ -311,10 +315,10 @@ p{
     text-align: center;
 }
 .spotify-button{
-    margin:0 auto;
+    margin: 0 auto;
     display:block;
     font-family: dm-medium;
-    margin-top: 24px;
+    margin-top: 40px;
     color: white;
     text-decoration: none;
     background-color: #1DB954; /* Green */
@@ -347,5 +351,6 @@ footer{
     color: white;
     font-family: dm-regular;
     font-size: 20px;
+    padding-top: 30px;
 }
 
