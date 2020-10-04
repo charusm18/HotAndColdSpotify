@@ -60,6 +60,7 @@
       </div>
     </script>
 
+
   <!-- prints out the access tokens -->
   <script id="oauth-template" type="text/x-handlebars-template">
       <h2>oAuth info</h2>
@@ -88,7 +89,6 @@
         return hashParams;
       }
 
-      // gets a json of the user info
       var userProfileSource = document.getElementById('user-profile-template').innerHTML,
         userProfileTemplate = Handlebars.compile(userProfileSource),
         userProfilePlaceholder = document.getElementById('user-profile');
@@ -130,7 +130,7 @@
           $('#login').show();
           $('#loggedin').hide();
         }
-
+      
         document.getElementById('obtain-new-token').addEventListener('click', function () {
           $.ajax({
             url: '/refresh_token',
@@ -144,8 +144,10 @@
               refresh_token: refresh_token
             });
           });
-        }, false);
+        }, false);    
+      
       }
+
     })();
   </script>
 

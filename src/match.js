@@ -1,7 +1,4 @@
-const { MongoClient } = require('mongodb');
-const mongoUri = "Mongo URL Here";
-const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
-const collection = client.db("UserData").collection("Users");
+
 
 /**
  * getMatches() returns the array of 2 arrays 
@@ -9,21 +6,27 @@ const collection = client.db("UserData").collection("Users");
  * @param {*} userDict formatted as output of createDatabaseDict()
  */
 async function getMatches(userDict) {
+  const { MongoClient } = require('mongodb');
+  const mongoUri = "";
+  const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+
+  let maxSimilarity = -1;
+  let minSimilarity = 21;
+  let hotMatch = {};
+  let coldMatch = {};
+
   try {
     await client.connect();
+  
+    const collection = client.db("UserData").collection("Users");
 
     // there should only ever be one dict representing each user
-    const result = collection.find({ "user": { "userUrl": userDict["user"]["userUrl"] } }).toArray(); // TODO
+    const result = await collection.find({ "user": { "userUrl": userDict["user"]["userUrl"] } }).toArray(); // TODO
     if (result !== []) {
       collection.deleteOne(result[0]);
     }
 
-    let maxSimilarity = -1;
-    let minSimilarity = 21;
-    let hotMatch = {};
-    let coldMatch = {};
-
-    const users = collection.find({}).toArray();
+    const users = await collection.find({}).toArray();
 
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
@@ -46,11 +49,11 @@ async function getMatches(userDict) {
 
     // max similarity score is 20 for n = 10
     return [[hotMatch, maxSimilarity / 20.0], [coldMatch, minSimilarity / 20.0]];
-
+  
   } catch (e) {
     console.error(e);
-    await client.close();
-  }
+  } 
+
 }
 
 /**

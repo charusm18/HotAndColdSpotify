@@ -14,6 +14,7 @@ var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const { json } = require('express');
 
 var client_id = ''; // Your client id
 var client_secret = ''; // Your secret
@@ -43,6 +44,7 @@ var generateRandomString = function(length) {
 var stateKey = 'spotify_auth_state';
 
 var app = express();
+
 
 app.use(express.static(__dirname + '/public'))
    .use(cors())
@@ -168,6 +170,12 @@ app.get('/callback', function(req, res) {
 
             songs_list.push(dict);
           }
+          
+          current_user = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
+          console.log(current_user);
+          matches = match.getMatches(current_user); 
+          console.log(matches);
+          //insert helped function => create dictionary
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -214,6 +222,21 @@ app.get('/refresh_token', function(req, res) {
 
 
 });
+
+app.get('/dictionary_matches', async function(req, res) {
+
+  // requesting access token from refresh token
+  console.log("dict");
+  userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
+  matchDict = await match.getMatches(userDict);
+  matchesAsJson = json.stringify(matchDict)
+  
+
+  res.send(matchesAsJson)
+
+
+});
+
 
 console.log('Listening on 8888');
 app.listen(8888);
