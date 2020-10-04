@@ -16,8 +16,8 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const { json, Router } = require('express');
 
-var client_id = 'df9043305ece4ffca058fc21df83e5ea'; // Your client id
-var client_secret = '5a7dc1a2891c4776a07e4b15ee8d82a6'; // Your secret
+var client_id = ''; // Your client id
+var client_secret = ''; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 var user_info = {}; //dictionary that holds user information

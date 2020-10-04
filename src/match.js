@@ -1,4 +1,3 @@
-
 /**
  * getMatches() returns the dictionary
  * {hotMatch, hotPercentMatch, coldMatch, coldPercentMatch}
@@ -6,7 +5,7 @@
  */
 async function getMatches(userDict) {
   const { MongoClient } = require('mongodb');
-  const mongoUri = "mongodb+srv://admin:KX1U1uNS41ECEnzy@hotandcold.dzr2r.mongodb.net/UserData?retryWrites=true&w=majority";
+  const mongoUri = "Mongo URL Here";
   const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   try {
@@ -45,23 +44,17 @@ async function getMatches(userDict) {
 
     await client.close();
 
-    // console.log("hot match " + maxSimilarity / 20.0 + " with " + hotMatch["user"]["displayName"]);
-    // console.log("cold match " + minSimilarity / 20.0 + " with " + coldMatch["user"]["displayName"]);
-
-    // console.log(userDict["user"]["displayName"] + " has genres " + userDict["genres"]);
-    // console.log(hotMatch["user"]["displayName"] + " has genres " + hotMatch["genres"]);
-
     // max similarity score is 20 for n = 10
     return {
       "hotMatch": hotMatch,
-      "hotPercentMatch": maxSimilarity / 20.0,
+      "hotPercentMatch": Math.round(1000.0 * maxSimilarity / 20.0) / 10.0,
       "coldMatch": coldMatch,
-      "coldPercentMatch": minSimilarity / 20.0
+      "coldPercentMatch": Math.round(1000.0 * minSimilarity / 20.0) / 10.0
     };
 
   } catch (e) {
     console.error(e);
-  } 
+  }
 
 }
 
