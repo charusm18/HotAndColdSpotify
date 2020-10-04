@@ -1,0 +1,62 @@
+@charset "utf-8";
+
+@font-face{
+    font-family: dm-regular;
+    src: url('../fonts/DMSans-Regular.ttf');
+}
+@font-face{
+    font-family: dm-mediumitalic;
+    src: url('../fonts/DMSans-MediumItalic.ttf');
+}
+@font-face{
+    font-family: dm-medium;
+    src: url('../fonts/DMSans-Medium.ttf');
+}
+@font-face{
+    font-family: dm-italic;
+    src: url('../fonts/DMSans-Italic.ttf');
+}
+@font-face{
+    font-family: dm-bolditalic;
+    src: url('../fonts/DMSans-BoldItalic.ttf');
+}
+@font-face{
+    font-family: dm-bold;
+    src: url('../fonts/DMSans-Bold.ttf');
+}
+
+body {
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5)), url(../images/music-background.jpg);
+    -webkit-background-size: cover;
+    -moz-background-size:  cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+header{
+    padding-top: 200px;
+    font-family: dm-bold;
+    text-align: center;
+    color: white;
+    font-size: 70px;
+}
+footer{
+    font-family: dm-regular;
+    color: white;
+    font-size: 14px;
+    text-align: center;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 4.5rem;
+}
+.tag{
+    padding-top: 24px;
+    text-align: center;
+}
+.tag p{
+    color: white;
+    font-family: dm-regular;
+    font-size: 20px;
+}
+
