@@ -8,7 +8,7 @@ const collection = client.db("UserData").collection("Users");
  * [[hotMatch, percentMatch], [coldMatch, percentMatch]]
  * @param {*} userDict formatted as output of createDatabaseDict()
  */
-function getMatches(userDict) {
+async function getMatches(userDict) {
   try {
     await client.connect();
 
@@ -90,3 +90,5 @@ function createDatabaseDict(userInfo, topGenres, topSongs, topArtists) {
     "artists": topArtists
   };
 }
+
+module.exports = {createDatabaseDict, getMatches}

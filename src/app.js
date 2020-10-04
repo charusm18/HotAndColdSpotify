@@ -7,6 +7,8 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+ const match = require('./match');
+
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
 var cors = require('cors');
@@ -16,6 +18,12 @@ var cookieParser = require('cookie-parser');
 var client_id = ''; // Your client id
 var client_secret = ''; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+
+var user_info = {}; //user info
+var artist_list = [];
+var genre_list = [];
+var songs_list = [];
+
 
 /**
  * Generates a random string containing numbers and letters
@@ -56,6 +64,8 @@ app.get('/login', function(req, res) {
       state: state
     }));
 });
+
+////////////////////////////// callback function ///////////////////////////////////////////////////
 
 app.get('/callback', function(req, res) {
 
@@ -110,20 +120,16 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
-        // use the access token to access the Spotify Web API
+        //populates the 
         request.get(options, function (error, response, body) {
-          var user_info = {};
+          
           user_info["displayName"] = body["display_name"];
           user_info["profilePic"] = body["images"][0]["url"];
           user_info["userUrl"] = body["external_urls"]["spotify"];
-
-          console.log(user_info);
-
         });
 
+        //
         request.get(artists, function (error, response, body) {
-          var artist_list = []
-          var genre_list = []
           var i;
           for (i = 0; i < body["items"].length; i++) {
             var dict = {};
@@ -141,12 +147,10 @@ app.get('/callback', function(req, res) {
             if(artist_genres[j] != undefined) // incase all the genres of at artist has been seen before
               genre_list.push(artist_genres[j]);
           }
-          console.log(artist_list);
-          console.log(genre_list);
+
         });
 
         request.get(tracks, function (error, response, body) {
-          var songs_list = []
           var i;
           for (i = 0; i < body["items"].length; i++) {
             var dict = {};
@@ -164,7 +168,6 @@ app.get('/callback', function(req, res) {
 
             songs_list.push(dict);
           }
-          console.log(songs_list);
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -182,6 +185,9 @@ app.get('/callback', function(req, res) {
     });
   }
 });
+
+
+////////////////////////////////////////////////////////////////////////////////////////////
 
 app.get('/refresh_token', function(req, res) {
 
@@ -205,7 +211,10 @@ app.get('/refresh_token', function(req, res) {
       });
     }
   });
+
+
 });
 
 console.log('Listening on 8888');
 app.listen(8888);
+console.log(match.createDatabaseDict(user_info, genre_list, songs_list, artist_list));
