@@ -85,7 +85,7 @@ h2{
 .genre-item{
     background-color: white;
     font-family: dm-medium;
-    filter: drop-shadow(2px 4px 4px #CACACA);
+    filter: drop-shadow(0px 0px 4px #CACACA);
     padding: 10px 0px 10px 20px;
     text-align: left;
     border-radius: 8px;
@@ -313,6 +313,7 @@ p{
     font-family: dm-regular;
     font-size: 28px;
     text-align: center;
+    padding-top:20px;
 }
 .spotify-button{
     margin: 0 auto;

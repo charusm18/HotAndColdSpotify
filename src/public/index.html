@@ -51,7 +51,7 @@
               <div class="square">
                  <img class="profile-pic" alt="profile" src="{{data.hotMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">{{data.hotMatch.user.displayName}}</a>
+              <a target = "_blank" href="{{data.hotMatch.user.userUrl}}" id="profile-button" class="spotify-button">{{data.hotMatch.user.displayName}}</a>
               <div class="section">
                  <h2>How Your Top Genres Compare</h2>
                  <div class="compare-genres">
@@ -59,16 +59,16 @@
                          <img class="profile-pic-sm" src="{{user.user.profilePic}}">
                      </div>
                      <div class="genre-grid-container">
-                         <div class="genre-item" id="green">1 ⋅ {{user.genres.[0]}}</div>
-                         <div class="genre-item" id="green">1 ⋅ {{data.hotMatch.genres.[0]}}</div>
-                         <div class="genre-item" id="green">2 ⋅ {{user.genres.[1]}}</div>
-                         <div class="genre-item" id="green">2 ⋅ {{data.hotMatch.genres.[1]}}</div>
-                         <div class="genre-item" id="red">3 ⋅ {{user.genres.[2]}}</div>
-                         <div class="genre-item" id="yellow">3 ⋅ {{data.hotMatch.genres.[2]}}</div>
-                         <div class="genre-item" id="red">4 ⋅ {{user.genres.[3]}}</div>
-                         <div class="genre-item" id="red">4 ⋅ {{data.hotMatch.genres.[3]}}</div>
-                         <div class="genre-item" id="yellow">5 ⋅ {{user.genres.[4]}}</div>
-                         <div class="genre-item" id="red">5 ⋅ {{data.hotMatch.genres.[4]}}</div>
+                         <div class="genre-item">1 ⋅ {{user.genres.[0]}}</div>
+                         <div class="genre-item">1 ⋅ {{data.hotMatch.genres.[0]}}</div>
+                         <div class="genre-item">2 ⋅ {{user.genres.[1]}}</div>
+                         <div class="genre-item">2 ⋅ {{data.hotMatch.genres.[1]}}</div>
+                         <div class="genre-item">3 ⋅ {{user.genres.[2]}}</div>
+                         <div class="genre-item">3 ⋅ {{data.hotMatch.genres.[2]}}</div>
+                         <div class="genre-item">4 ⋅ {{user.genres.[3]}}</div>
+                         <div class="genre-item">4 ⋅ {{data.hotMatch.genres.[3]}}</div>
+                         <div class="genre-item">5 ⋅ {{user.genres.[4]}}</div>
+                         <div class="genre-item">5 ⋅ {{data.hotMatch.genres.[4]}}</div>
                      </div>
                      <div class="prof-right">
                          <img class="profile-pic-sm" src="{{data.hotMatch.user.profilePic}}">
@@ -179,7 +179,7 @@
               <div class="square">
                  <img class="profile-pic" alt="profile" src="{{data.coldMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">{{data.coldMatch.user.displayName}}</a>
+              <a target = "_blank" href="{{data.coldMatch.user.userUrl}}" id="profile-button" class="spotify-button">{{data.coldMatch.user.displayName}}</a>
               <div class="section">
                  <h2 id="cold-text">How Your Top Genres Compare</h2>
                  <div class="compare-genres">
@@ -187,16 +187,16 @@
                          <img class="profile-pic-sm" src="{{user.user.profilePic}}">
                      </div>
                      <div class="genre-grid-container">
-                         <div class="genre-item" id="green">1 ⋅ {{user.genres.[0]}}</div>
-                         <div class="genre-item" id="green">1 ⋅ {{data.coldMatch.genres.[0]}}</div>
-                         <div class="genre-item" id="green">2 ⋅ {{user.genres.[1]}}</div>
-                         <div class="genre-item" id="green">2 ⋅ {{data.coldMatch.genres.[1]}}</div>
-                         <div class="genre-item" id="red">3 ⋅ {{user.genres.[2]}}</div>
-                         <div class="genre-item" id="yellow">3 ⋅ {{data.coldMatch.genres.[2]}}</div>
-                         <div class="genre-item" id="red">4 ⋅ {{user.genres.[3]}}</div>
-                         <div class="genre-item" id="red">4 ⋅ {{data.coldMatch.genres.[3]}}</div>
-                         <div class="genre-item" id="yellow">5 ⋅ {{user.genres.[4]}}</div>
-                         <div class="genre-item" id="red">5 ⋅ {{data.coldMatch.genres.[4]}}</div>
+                         <div class="genre-item">1 ⋅ {{user.genres.[0]}}</div>
+                         <div class="genre-item">1 ⋅ {{data.coldMatch.genres.[0]}}</div>
+                         <div class="genre-item">2 ⋅ {{user.genres.[1]}}</div>
+                         <div class="genre-item">2 ⋅ {{data.coldMatch.genres.[1]}}</div>
+                         <div class="genre-item">3 ⋅ {{user.genres.[2]}}</div>
+                         <div class="genre-item">3 ⋅ {{data.coldMatch.genres.[2]}}</div>
+                         <div class="genre-item">4 ⋅ {{user.genres.[3]}}</div>
+                         <div class="genre-item">4 ⋅ {{data.coldMatch.genres.[3]}}</div>
+                         <div class="genre-item">5 ⋅ {{user.genres.[4]}}</div>
+                         <div class="genre-item">5 ⋅ {{data.coldMatch.genres.[4]}}</div>
                      </div>
                      <div class="prof-right">
                          <img class="profile-pic-sm" src="{{data.coldMatch.user.profilePic}}">

@@ -6,7 +6,7 @@
  */
 async function getMatches(userDict) {
   const { MongoClient } = require('mongodb');
-  const mongoUri = "";
+  const mongoUri = "mongodb+srv://admin:KX1U1uNS41ECEnzy@hotandcold.dzr2r.mongodb.net/UserData?retryWrites=true&w=majority";
   const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
 
   try {
