@@ -1,35 +1,35 @@
-# Spotify Accounts Authentication Examples
+# Hot&Cold 
 
-This project contains basic demos showing the different OAuth 2.0 flows for [authenticating against the Spotify Web API](https://developer.spotify.com/web-api/authorization-guide/).
+Hot&Cold is a webapp for Spotify users to meet other users who have the same
+music taste and polar opposite music tastes! Each user receives a HOT match: a
+user who has extrememly similar taste, and a COLD match: a user who has 
+extrememly different music taste.
 
-These examples cover:
-
-* Authorization Code flow
-* Client Credentials flow
-* Implicit Grant flow
-
+---
 ## Installation
+This project requires [nodejs](https://nodejs.org/en/download/). 
 
-These examples run on Node.js. On [its website](http://www.nodejs.org/download/) you can find instructions on how to install it. You can also follow [this gist](https://gist.github.com/isaacs/579814) for a quick and easy way to install Node.js and npm.
+Run the following bash commands after cloning the repo:
+```bash
+npm install
+npm install mongodb
+```
 
-Once installed, clone the repository and install its dependencies running:
+---
+## Deployment
+Navigate to the `src/` folder and run:
+```bash
+node app.js
+```
+This will run the webapp locally on your machine at `http://localhost:8888`
 
-    $ npm install
+---
+## Built With
+- [Spotify Web API](https://developer.spotify.com/documentation/web-api/)
+- [MongoDB](https://www.mongodb.com/)
 
-### Using your own credentials
-You will need to register your app and get your own credentials from the Spotify for Developers Dashboard.
-
-To do so, go to [your Spotify for Developers Dashboard](https://beta.developer.spotify.com/dashboard) and create your application. For the examples, we registered these Redirect URIs:
-
-* http://localhost:8888 (needed for the implicit grant flow)
-* http://localhost:8888/callback
-
-Once you have created your app, replace the `client_id`, `redirect_uri` and `client_secret` in the examples with the ones you get from My Applications.
-
-## Running the examples
-In order to run the different examples, open the folder with the name of the flow you want to try out, and run its `app.js` file. For instance, to run the Authorization Code example do:
-
-    $ cd authorization_code
-    $ node app.js
-
-Then, open `http://localhost:8888` in a browser.
+--- 
+## Authors
+- [Margaret Chan](https://github.com/margaretchan)
+- [Cristie Huang](https://github.com/cristiehuang8)
+- [Charu Murugesan](https://github.com/charusm18)

@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb'); // npm install mongodb
+const { MongoClient } = require('mongodb');
 
 async function main() {
   const mongoUri = "Mongo URL Here";
