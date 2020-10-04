@@ -7,28 +7,39 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
+const match = require('./match');
+
 var express = require('express'); // Express web server framework
+var router = express.Router();
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
+const { json, Router } = require('express');
 
 var client_id = 'df9043305ece4ffca058fc21df83e5ea'; // Your client id
 var client_secret = 'a780f955e5f849fe98478aeabef4f716'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+
+var user_info = {}; //user info
+var artist_list = [];
+var genre_list = [];
+var songs_list = [];
+
 
 /**
  * Generates a random string containing numbers and letters
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
+
   return text;
 };
 
@@ -36,11 +47,12 @@ var stateKey = 'spotify_auth_state';
 
 var app = express();
 
-app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.use(express.static(__dirname + '/public'))
+  .use(cors())
+  .use(cookieParser());
+
+app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -57,7 +69,9 @@ app.get('/login', function(req, res) {
     }));
 });
 
-app.get('/callback', function(req, res) {
+////////////////////////////// callback function ///////////////////////////////////////////////////
+
+app.get('/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -86,11 +100,11 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+          refresh_token = body.refresh_token;
 
         var options = {
           url: 'https://api.spotify.com/v1/me',
@@ -110,23 +124,55 @@ app.get('/callback', function(req, res) {
           json: true
         };
 
-        // use the access token to access the Spotify Web API
+        //populates the 
         request.get(options, function (error, response, body) {
-          console.log(body);
+
+          user_info["displayName"] = body["display_name"];
+          user_info["profilePic"] = body["images"][0]["url"];
+          user_info["userUrl"] = body["external_urls"]["spotify"];
         });
 
+        //
         request.get(artists, function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
-            console.log(body["items"][i]["album"]);
+            var dict = {};
+            dict["artistName"] = body["items"][i]["name"];
+            dict["artistPic"] = body["items"][i]["images"][0]["url"];
+            dict["artistUrl"] = body["items"][i]["external_urls"]["spotify"];
+
+            artist_list[i] = dict;
+
+            var j = 0;
+            artist_genres = body["items"][i]["genres"];
+            while (genre_list.includes(artist_genres[j]) && j < artist_genres.length) {
+              j++;
+            }
+            if (artist_genres[j] != undefined) // incase all the genres of at artist has been seen before
+              genre_list.push(artist_genres[j]);
           }
+
         });
 
-        request.get(tracks, function (error, response, body) {
+        request.get(tracks, async function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
-            console.log(body["items"][i]["album"]);
+            var dict = {};
+            dict["songName"] = body["items"][i]["name"];
+            dict["songPicture"] = body["items"][i]["album"]["images"][0]["url"];
+            dict["songUrl"] = body["items"][i]["external_urls"]["spotify"];
+
+            var artists = [];
+            var j;
+            for (j = 0; j < body["items"][i]["artists"].length; j++) {
+              artists.push(body["items"][i]["artists"][j]["name"])
+            }
+
+            dict["songArtists"] = artists;
+
+            songs_list.push(dict);
           }
+
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -145,7 +191,10 @@ app.get('/callback', function(req, res) {
   }
 });
 
-app.get('/refresh_token', function(req, res) {
+
+////////////////////////////////////////////////////////////////////////////////////////////
+
+app.get('/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -159,7 +208,7 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
@@ -167,7 +216,24 @@ app.get('/refresh_token', function(req, res) {
       });
     }
   });
+
+});
+
+//server.js
+app.post('/dictionary-matches',async function(req,res){
+
+  // the message being sent back will be saved in a localSession variable
+  // send back a couple list items to be added to the DOM
+  console.log("in post request")
+  userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
+  matchDict = await match.getMatches(userDict);
+  //matchesAsJson = JSON.stringify(matchDict);
+  input = {data: matchDict, success: true};
+  console.log(input)
+  res.send(input);
+
 });
 
 console.log('Listening on 8888');
 app.listen(8888);
+
