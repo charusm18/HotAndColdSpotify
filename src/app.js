@@ -51,9 +51,9 @@ app.use(express.static(__dirname + '/public'))
   .use(cors())
   .use(cookieParser());
 
-  /**
-   * GET request of login through spotify and get user authentication
-   */
+/**
+ * GET request of login through spotify and get user authentication
+ */
 app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
@@ -106,7 +106,7 @@ app.get('/callback', function (req, res) {
     };
 
     request.post(authOptions, function (error, response, body) {
-      
+
       //if we have a valid authentication code, get data
       if (!error && response.statusCode === 200) {
 
@@ -230,16 +230,16 @@ app.get('/refresh_token', function (req, res) {
  * POST request to get the Dictionary matches and send to frontEnd; takes no 
  * inputs since everything needed is stored in global variables
  */
-app.post('/dictionary-matches',async function(req,res){
-  
+app.post('/dictionary-matches', async function (req, res) {
+
   //creates a dictionary with user's data
   userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
-  
+
   //creates a dictionary with the user's hot matches, cold matches, and percentages
   matchDict = await match.getMatches(userDict);
-  
+
   //creates a dictionary that includes the data, and sucess variable to indicate sucess
-  input = {data: matchDict, user: userDict, success: true};
+  input = { data: matchDict, user: userDict, success: true };
 
   res.send(input); //sends input to url
 
