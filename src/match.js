@@ -13,7 +13,7 @@ async function getMatches(userDict) {
     const collection = client.db("UserData").collection("Users");
 
     // there should only ever be one dict representing each user
-    const result = await collection.find({ "user.userUrl": userDict["user"]["userUrl"] }).toArray(); // TODO
+    const result = await collection.find({ "user.userUrl": userDict["user"]["userUrl"] }).toArray();
     if (result.length !== 0) {
       collection.deleteOne(result[0]);
     }
@@ -81,7 +81,8 @@ function getMatchScore(array1, array2) {
 }
 
 /**
- * The dict that should be inserted into the mongoDB collection
+ * createDatabaseDict() returns the dict that should be inserted into the 
+ * mongoDB collection for storage and future matching
  * @param {dict} userInfo of {displayName, userUrl, userPic}
  * @param {Array} topGenres genre names as strings, length 10
  * @param {Array of dict} topSongs of {songName, artist, albumCover, songUrl} length 10
@@ -96,4 +97,5 @@ function createDatabaseDict(userInfo, topGenres, topSongs, topArtists) {
   };
 }
 
+// export functions so they can be called in app.js
 module.exports = { createDatabaseDict, getMatches }
