@@ -89,7 +89,7 @@
           return hashParams;
         }
         
-        // gets a json of the user info
+        
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
             userProfileTemplate = Handlebars.compile(userProfileSource),
             userProfilePlaceholder = document.getElementById('user-profile');
@@ -126,6 +126,7 @@
                   $('#loggedin').show();
                 }
             });
+            
           } else {
               // render initial screen
               $('#login').show();
