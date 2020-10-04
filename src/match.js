@@ -9,6 +9,7 @@ async function main() {
     await client.connect();
 
     // do stuff here
+    // collection.insertOne()
 
   } catch (e) {
     console.error(e);
