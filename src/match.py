@@ -1,6 +1,6 @@
 from pymongo import MongoClient # pip3 install pymongo dnspython
 
-client = MongoClient('Mongo URL Here')
+client = MongoClient('mongodb+srv://admin:KX1U1uNS41ECEnzy@hotandcold.dzr2r.mongodb.net/UserData?retryWrites=true&w=majority')
 users_collection = client.UserData.Users
 
 # result = users_collection.insert_one(get_database_dict())
@@ -49,16 +49,14 @@ def get_match_score(self, list1, list2):
 get_database_dict() returns the dict that should be inserted into the 
 mongoDB collection. 
 
-display_name - string
-account_id - string
+user_info - tuple of (display_name, user_url, user_pic)
 top_genres - list of strings, length 10
-top_songs - list of (song_name, artist) pairs, length 10
-top_artists - list of strings, length 10
+top_songs - list of (song_name, artist, album_cover, song_url) pairs, length 10
+top_artists - list of (artist_name, pic_url), length 10
 """
-def get_database_dict(self, display_name, account_id, top_genres, top_songs, top_artists):
+def get_database_dict(self, user_info, top_genres, top_songs, top_artists):
   return {
-    "display_name" : display_name,
-    "account_id" : account_id,
+    "user_info" : user_info,
     "top_genres" : top_genres,
     "top_songs" : top_songs,
     "top_artists" : top_artists
