@@ -47,11 +47,11 @@
          <div class="hot">
              <img class="icon" src="images/fire.png">
              <p class="subheading">HOTTEST MATCH</p>
-             <p class="match">98% FIT</p>
+             <p class="match">{{hotPercentMatch}}% FIT</p>
               <div class="square">
-                 <img class="profile-pic" alt="profile" src="images/person2.jpeg">
+                 <img class="profile-pic" alt="profile" src="{{hotMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">JAMIE WALKER</a>
+              <a href="#" id="profile-button" class="spotify-button">{{hotMatch.user.displayName}}</a>
               <div class="section">
                  <h2>How Your Top Genres Compare</h2>
                  <div class="compare-genres">
@@ -71,82 +71,82 @@
                          <div class="genre-item" id="red">5 ⋅ RAP</div>
                      </div>
                      <div class="prof-right">
-                         <img class="profile-pic-sm" src="images/person3.jpg">
+                         <img class="profile-pic-sm" src="{{hotMatch.user.profilePic}}">
                      </div>
                  </div>
              </div>
               <div class="section">
-                 <h2>Jamie's Top 10 Songs</h2>
+                 <h2>{{hotMatch.user.displayName}}'s Top 10 Songs</h2>
                  <div class="song-grid-container">
                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.0.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                             <p class="song-title">{{hotMatch.songs.0.songName}}</p>
+                             <p class="song-artist">{{hotMatch.songs.0.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.1.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                             <p class="song-title">{{hotMatch.songs.1.songName}}</p>
+                             <p class="song-artist">{{hotMatch.songs.1.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.2.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                             <p class="song-title">{{hotMatch.songs.2.songName}}</p>
+                             <p class="song-artist">{{hotMatch.songs.2.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.3.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.3.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.3.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.4.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.4.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.4.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.5.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.5.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.5.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.6.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.6.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.6.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.7.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.7.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.7.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.8.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.8.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.8.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{hotMatch.songs.9.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{hotMatch.songs.9.songName}}</p>
+                          <p class="song-artist">{{hotMatch.songs.9.songArtists}}</p>
                          </div>
                      </div>
                  </div>
@@ -157,16 +157,16 @@
                  <div class="artist-grid-container">
                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
                      <div class="artist-item">
-                         <img src="images/troye.jpg" class="artist-pic">
-                         <p class="artist-name">TROYE SIVAN</p>
+                         <img src="{{hotMatch.artists.0.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{hotMatch.artists.0.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="images/niki.jpg" class="artist-pic">
-                         <p class="artist-name">NIKI</p>
+                         <img src="{{hotMatch.artists.1.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{hotMatch.artists.1.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="images/hippo.jpeg" class="artist-pic">
-                         <p class="artist-name">HIPPO CAMPUS</p>
+                         <img src="{{hotMatch.artists.2.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{hotMatch.artists.2.artistName}}</p>
                      </div>
                  </div>
              </div>
@@ -175,11 +175,11 @@
          <div class="cold">
              <img class="icon" src="images/ice.png">
              <p class="subheading" id="cold-text">COLDEST MATCH</p>
-             <p class="match">12% FIT</p>
+             <p class="match">{{coldPercentMatch}}% FIT</p>
               <div class="square">
-                 <img class="profile-pic" alt="profile" src="images/man.jpg">
+                 <img class="profile-pic" alt="profile" src="{{coldMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">DAVID JAMES</a>
+              <a href="#" id="profile-button" class="spotify-button">{{coldMatch.user.displayName}}</a>
               <div class="section">
                  <h2 id="cold-text">How Your Top Genres Compare</h2>
                  <div class="compare-genres">
@@ -199,81 +199,81 @@
                          <div class="genre-item" id="red">5 ⋅ RAP</div>
                      </div>
                      <div class="prof-right">
-                         <img class="profile-pic-sm" src="images/person3.jpg">
+                         <img class="profile-pic-sm" src="{{coldMatch.user.profilePic}}">
                      </div>
                  </div>
              </div>
               <div class="section">
-                 <h2 id="cold-text">Jamie's Top 10 Songs</h2>
+                 <h2 id="cold-text">{{coldMatch.user.displayName}}'s Top 10 Songs</h2>
                  <div class="song-grid-container">
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.0.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                            <p class="song-title">{{coldMatch.songs.0.songName}}</p>
+                            <p class="song-artist">{{coldMatch.songs.0.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.1.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.1.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.1.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.2.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.2.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.2.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.3.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.3.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.3.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.4.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.4.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.4.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.5.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.5.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.5.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.6.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.6.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.6.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.7.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.7.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.7.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.8.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.8.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.8.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="images/boy.jpg" class="song-pic">
+                         <img src="{{coldMatch.songs.9.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                             <p class="song-title">Dance, Baby!</p>
-                             <p class="song-artist">BOY PABLO</p>
+                          <p class="song-title">{{coldMatch.songs.9.songName}}</p>
+                          <p class="song-artist">{{coldMatch.songs.9.songArtists}}</p>
                          </div>
                      </div>
                  </div>
@@ -283,41 +283,23 @@
                  <h2 id="cold-text">Top Artists You Have in Common</h2>
                  <div class="artist-grid-container">
                      <div class="artist-item">
-                         <img src="images/troye.jpg" class="artist-pic">
-                         <p class="artist-name">TROYE SIVAN</p>
+                         <img src="{{coldMatch.artists.0.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{coldMatch.artists.0.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="images/niki.jpg" class="artist-pic">
-                         <p class="artist-name">NIKI</p>
+                         <img src="{{coldMatch.artists.1.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{coldMatch.artists.1.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="images/hippo.jpeg" class="artist-pic">
-                         <p class="artist-name">HIPPO CAMPUS</p>
+                         <img src="{{coldMatch.artists.2.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{coldMatch.artists.2.artistName}}</p>
                      </div>
                  </div>
              </div>
        </div>
    </div>
  </body>
-     <!-- <h1>Logged in as {{hotPercentMatch}}</h1>
-     <div class="media">
-       <div class="pull-left">
-         <img class="media-object" width="150" src="{{images.0.url}}" />
-       </div>
-       <div class="media-body">
-         <dl class="dl-horizontal">
-           <dt>Display name</dt><dd class="clearfix">{{display_name}}</dd>
-           <dt>Id</dt><dd>{{id}}</dd>
-           <dt>Email</dt><dd>{{email}}</dd>
-           <dt>Spotify URI</dt><dd><a href="{{external_urls.spotify}}">{{external_urls.spotify}}</a></dd>
-           <dt>Link</dt><dd><a href="{{href}}">{{href}}</a></dd>
-           <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
-           <dt>Country</dt><dd>{{country}}</dd>
-           <dt>Items</dt><dd>{{total}}</dd>
-          
-         </dl>
-       </div>
-     </div> -->
+
    </script>
  
  
@@ -356,7 +338,7 @@
        var access_token = params.access_token,
          refresh_token = params.refresh_token,
          error = params.error;
-       var hotPercentMatch;
+       
  
        if (error) {
          alert('There was an error during the authentication');
@@ -390,6 +372,9 @@
                 console.log(data); //data is dictionary => 
                 hotPercentMatch = data.data.hotPercentMatch;
                 console.log(hotPercentMatch);
+                userProfilePlaceholder.innerHTML = userProfileTemplate(data.data);
+                console.log(userProfilePlaceholder.innerHTML);
+
                 return;
               }
             }).fail(function () {
