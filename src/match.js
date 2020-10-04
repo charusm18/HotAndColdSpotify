@@ -1,20 +1,21 @@
-const { MongoClient } = require('mongodb');
-const mongoUri = "Mongo URL Here";
-const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
-const collection = client.db("UserData").collection("Users");
 
 /**
- * getMatches() returns the array of 2 arrays 
- * [[hotMatch, percentMatch], [coldMatch, percentMatch]]
+ * getMatches() returns the dictionary
+ * {hotMatch, hotPercentMatch, coldMatch, coldPercentMatch}
  * @param {*} userDict formatted as output of createDatabaseDict()
  */
 async function getMatches(userDict) {
+  const { MongoClient } = require('mongodb');
+  const mongoUri = "Mongo URL Here";
+  const client = new MongoClient(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true });
+
   try {
     await client.connect();
+    const collection = client.db("UserData").collection("Users");
 
     // there should only ever be one dict representing each user
-    const result = collection.find({ "user": { "userUrl": userDict["user"]["userUrl"] } }).toArray(); // TODO
-    if (result !== []) {
+    const result = await collection.find({ "user.userUrl": userDict["user"]["userUrl"] }).toArray(); // TODO
+    if (result.length !== 0) {
       collection.deleteOne(result[0]);
     }
 
@@ -23,7 +24,7 @@ async function getMatches(userDict) {
     let hotMatch = {};
     let coldMatch = {};
 
-    const users = collection.find({}).toArray();
+    const users = await collection.find({}).toArray();
 
     for (let i = 0; i < users.length; i++) {
       const user = users[i];
@@ -40,12 +41,23 @@ async function getMatches(userDict) {
     }
 
     // add new user data to DB
-    collection.insertOne(userDict);
+    await collection.insertOne(userDict);
 
     await client.close();
 
+    // console.log("hot match " + maxSimilarity / 20.0 + " with " + hotMatch["user"]["displayName"]);
+    // console.log("cold match " + minSimilarity / 20.0 + " with " + coldMatch["user"]["displayName"]);
+
+    // console.log(userDict["user"]["displayName"] + " has genres " + userDict["genres"]);
+    // console.log(hotMatch["user"]["displayName"] + " has genres " + hotMatch["genres"]);
+
     // max similarity score is 20 for n = 10
-    return [[hotMatch, maxSimilarity / 20.0], [coldMatch, minSimilarity / 20.0]];
+    return {
+      "hotMatch": hotMatch,
+      "hotPercentMatch": maxSimilarity / 20.0,
+      "coldMatch": coldMatch,
+      "coldPercentMatch": minSimilarity / 20.0
+    };
 
   } catch (e) {
     console.error(e);
@@ -68,7 +80,7 @@ function getMatchScore(array1, array2) {
     if (indexOfGenre === i) {
       score += 2.0 * rankMultiplier;
     } else if (indexOfGenre >= 0) {
-      score += 0.25 + Math.abs(indexOfGenre - i) / parseFloat(array1.length) * rankMultiplier;
+      score += (array1.length - Math.abs(indexOfGenre - i)) / parseFloat(array1.length);
     }
   }
 
@@ -91,4 +103,4 @@ function createDatabaseDict(userInfo, topGenres, topSongs, topArtists) {
   };
 }
 
-module.exports = {createDatabaseDict, getMatches}
+module.exports = { createDatabaseDict, getMatches }

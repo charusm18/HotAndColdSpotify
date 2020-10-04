@@ -7,7 +7,7 @@
  * https://developer.spotify.com/web-api/authorization-guide/#authorization_code_flow
  */
 
- const match = require('./match');
+const match = require('./match');
 
 var express = require('express'); // Express web server framework
 var request = require('request'); // "Request" library
@@ -30,13 +30,14 @@ var songs_list = [];
  * @param  {number} length The length of the string
  * @return {string} The generated string
  */
-var generateRandomString = function(length) {
+var generateRandomString = function (length) {
   var text = '';
   var possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
   for (var i = 0; i < length; i++) {
     text += possible.charAt(Math.floor(Math.random() * possible.length));
   }
+
   return text;
 };
 
@@ -45,10 +46,10 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 app.use(express.static(__dirname + '/public'))
-   .use(cors())
-   .use(cookieParser());
+  .use(cors())
+  .use(cookieParser());
 
-app.get('/login', function(req, res) {
+app.get('/login', function (req, res) {
 
   var state = generateRandomString(16);
   res.cookie(stateKey, state);
@@ -67,7 +68,7 @@ app.get('/login', function(req, res) {
 
 ////////////////////////////// callback function ///////////////////////////////////////////////////
 
-app.get('/callback', function(req, res) {
+app.get('/callback', function (req, res) {
 
   // your application requests refresh and access tokens
   // after checking the state parameter
@@ -96,11 +97,11 @@ app.get('/callback', function(req, res) {
       json: true
     };
 
-    request.post(authOptions, function(error, response, body) {
+    request.post(authOptions, function (error, response, body) {
       if (!error && response.statusCode === 200) {
 
         var access_token = body.access_token,
-            refresh_token = body.refresh_token;
+          refresh_token = body.refresh_token;
 
         var options = {
           url: 'https://api.spotify.com/v1/me',
@@ -122,7 +123,7 @@ app.get('/callback', function(req, res) {
 
         //populates the 
         request.get(options, function (error, response, body) {
-          
+
           user_info["displayName"] = body["display_name"];
           user_info["profilePic"] = body["images"][0]["url"];
           user_info["userUrl"] = body["external_urls"]["spotify"];
@@ -138,19 +139,19 @@ app.get('/callback', function(req, res) {
             dict["artistUrl"] = body["items"][i]["external_urls"]["spotify"];
 
             artist_list[i] = dict;
-            
+
             var j = 0;
             artist_genres = body["items"][i]["genres"];
-            while(genre_list.includes(artist_genres[j]) && j < artist_genres.length){
+            while (genre_list.includes(artist_genres[j]) && j < artist_genres.length) {
               j++;
             }
-            if(artist_genres[j] != undefined) // incase all the genres of at artist has been seen before
+            if (artist_genres[j] != undefined) // incase all the genres of at artist has been seen before
               genre_list.push(artist_genres[j]);
           }
 
         });
 
-        request.get(tracks, function (error, response, body) {
+        request.get(tracks, async function (error, response, body) {
           var i;
           for (i = 0; i < body["items"].length; i++) {
             var dict = {};
@@ -160,14 +161,19 @@ app.get('/callback', function(req, res) {
 
             var artists = [];
             var j;
-            for(j = 0; j < body["items"][i]["artists"].length; j++){
+            for (j = 0; j < body["items"][i]["artists"].length; j++) {
               artists.push(body["items"][i]["artists"][j]["name"])
             }
-            
-            dict["songArtists"] = artists; 
+
+            dict["songArtists"] = artists;
 
             songs_list.push(dict);
           }
+
+          let userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
+          console.log(userDict);
+          let x = await match.getMatches(userDict);
+          console.log(x);
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -189,7 +195,7 @@ app.get('/callback', function(req, res) {
 
 ////////////////////////////////////////////////////////////////////////////////////////////
 
-app.get('/refresh_token', function(req, res) {
+app.get('/refresh_token', function (req, res) {
 
   // requesting access token from refresh token
   var refresh_token = req.query.refresh_token;
@@ -203,7 +209,7 @@ app.get('/refresh_token', function(req, res) {
     json: true
   };
 
-  request.post(authOptions, function(error, response, body) {
+  request.post(authOptions, function (error, response, body) {
     if (!error && response.statusCode === 200) {
       var access_token = body.access_token;
       res.send({
@@ -212,9 +218,8 @@ app.get('/refresh_token', function(req, res) {
     }
   });
 
-
 });
 
 console.log('Listening on 8888');
 app.listen(8888);
-console.log(match.createDatabaseDict(user_info, genre_list, songs_list, artist_list));
+
