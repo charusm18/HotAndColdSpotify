@@ -10,14 +10,15 @@
 const match = require('./match');
 
 var express = require('express'); // Express web server framework
+var router = express.Router();
 var request = require('request'); // "Request" library
 var cors = require('cors');
 var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
-const { json } = require('express');
+const { json, Router } = require('express');
 
-var client_id = ''; // Your client id
-var client_secret = ''; // Your secret
+var client_id = 'df9043305ece4ffca058fc21df83e5ea'; // Your client id
+var client_secret = 'a780f955e5f849fe98478aeabef4f716'; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 var user_info = {}; //user info
@@ -172,10 +173,6 @@ app.get('/callback', function (req, res) {
             songs_list.push(dict);
           }
 
-          let userDict = match.createDatabaseDicZt(user_info, genre_list, songs_list, artist_list);
-          console.log(userDict);
-          let x = await match.getMatches(userDict);
-          console.log(x);
         });
 
         // we can also pass the token to the browser to make requests from there
@@ -222,20 +219,20 @@ app.get('/refresh_token', function (req, res) {
 
 });
 
-app.get('/dictionary_matches', async function(req, res) {
+//server.js
+app.post('/dictionary-matches',async function(req,res){
 
-  // requesting access token from refresh token
-  console.log("dict");
+  // the message being sent back will be saved in a localSession variable
+  // send back a couple list items to be added to the DOM
+  console.log("in post request")
   userDict = match.createDatabaseDict(user_info, genre_list, songs_list, artist_list);
   matchDict = await match.getMatches(userDict);
-  matchesAsJson = json.stringify(matchDict)
-  
-
-  res.send(matchesAsJson)
-
+  //matchesAsJson = JSON.stringify(matchDict);
+  input = {data: matchDict, success: true};
+  console.log(input)
+  res.send(input);
 
 });
-
 
 console.log('Listening on 8888');
 app.listen(8888);

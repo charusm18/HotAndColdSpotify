@@ -33,13 +33,14 @@
       <div id="oauth">
       </div>
       <button class="btn btn-default" id="obtain-new-token">Obtain new token using the refresh token</button>
+      <button class="trigger">Trigger Change</button>
     </div>
   </div>
 
 
   <!-- page that loads after getting authentication from spotify -->
   <script id="user-profile-template" type="text/x-handlebars-template">
-      <h1>Logged in as {{display_name}}</h1>
+      <h1>Logged in as {{hotPercentMatch}}</h1>
       <div class="media">
         <div class="pull-left">
           <img class="media-object" width="150" src="{{images.0.url}}" />
@@ -54,7 +55,7 @@
             <dt>Profile Image</dt><dd class="clearfix"><a href="{{images.0.url}}">{{images.0.url}}</a></dd>
             <dt>Country</dt><dd>{{country}}</dd>
             <dt>Items</dt><dd>{{total}}</dd>
-
+            
           </dl>
         </div>
       </div>
@@ -102,6 +103,7 @@
       var access_token = params.access_token,
         refresh_token = params.refresh_token,
         error = params.error;
+      var hotPercentMatch;
 
       if (error) {
         alert('There was an error during the authentication');
@@ -125,6 +127,7 @@
               $('#loggedin').show();
             }
           });
+  
         } else {
           // render initial screen
           $('#login').show();
@@ -150,6 +153,41 @@
 
     })();
   </script>
+
+
+<script>
+
+   //change DOM function
+   function changeDom(){
+       //ajax call
+        $.ajax({
+                 url: '/dictionary-matches',
+                 method:'POST',
+                 data: {list: "some info"}
+               }).done(function(data){
+                   //if we have a successful post request ... 
+                   if(data.success){
+                        console.log(data);
+                        hotPercentMatch = data.data.hotPercentMatch;
+                        console.log(hotPercentMatch);
+                       return;
+                   }
+               }).fail(function(){
+                  //do nothing ....
+                   console.log('failed...');
+                   return;
+               });
+       };
+
+   //trigger change DOM  function
+   $('.trigger').click(function(){
+       changeDom();
+   });
+
+</script>
+
+
+
 
   <footer>
     Made with ☕ by Cristie, Charu, and Margaret // ©2020
