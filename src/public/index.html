@@ -47,126 +47,126 @@
          <div class="hot">
              <img class="icon" src="images/fire.png">
              <p class="subheading">HOTTEST MATCH</p>
-             <p class="match">{{hotPercentMatch}}% FIT</p>
+             <p class="match">{{data.hotPercentMatch}}% FIT</p>
               <div class="square">
-                 <img class="profile-pic" alt="profile" src="{{hotMatch.user.profilePic}}">
+                 <img class="profile-pic" alt="profile" src="{{data.hotMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">{{hotMatch.user.displayName}}</a>
+              <a href="#" id="profile-button" class="spotify-button">{{data.hotMatch.user.displayName}}</a>
               <div class="section">
                  <h2>How Your Top Genres Compare</h2>
                  <div class="compare-genres">
                      <div class="prof-left">
-                         <img class="profile-pic-sm" src="images/person2.jpeg">
+                         <img class="profile-pic-sm" src="{{user.user.profilePic}}">
                      </div>
                      <div class="genre-grid-container">
-                         <div class="genre-item" id="green">1 ⋅ POP</div>
-                         <div class="genre-item" id="green">1 ⋅ POP</div>
-                         <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
-                         <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
-                         <div class="genre-item" id="red">3 ⋅ POP RAP</div>
-                         <div class="genre-item" id="yellow">3 ⋅ DANCE POP</div>
-                         <div class="genre-item" id="red">4 ⋅ MODERN ROCK</div>
-                         <div class="genre-item" id="red">4 ⋅ INDIE</div>
-                         <div class="genre-item" id="yellow">5 ⋅ DANCE POP</div>
-                         <div class="genre-item" id="red">5 ⋅ RAP</div>
+                         <div class="genre-item" id="green">1 ⋅ {{user.genres.[0]}}</div>
+                         <div class="genre-item" id="green">1 ⋅ {{data.hotMatch.genres.[0]}}</div>
+                         <div class="genre-item" id="green">2 ⋅ {{user.genres.[1]}}</div>
+                         <div class="genre-item" id="green">2 ⋅ {{data.hotMatch.genres.[1]}}</div>
+                         <div class="genre-item" id="red">3 ⋅ {{user.genres.[2]}}</div>
+                         <div class="genre-item" id="yellow">3 ⋅ {{data.hotMatch.genres.[2]}}</div>
+                         <div class="genre-item" id="red">4 ⋅ {{user.genres.[3]}}</div>
+                         <div class="genre-item" id="red">4 ⋅ {{data.hotMatch.genres.[3]}}</div>
+                         <div class="genre-item" id="yellow">5 ⋅ {{user.genres.[4]}}</div>
+                         <div class="genre-item" id="red">5 ⋅ {{data.hotMatch.genres.[4]}}</div>
                      </div>
                      <div class="prof-right">
-                         <img class="profile-pic-sm" src="{{hotMatch.user.profilePic}}">
+                         <img class="profile-pic-sm" src="{{data.hotMatch.user.profilePic}}">
                      </div>
                  </div>
              </div>
               <div class="section">
-                 <h2>{{hotMatch.user.displayName}}'s Top 10 Songs</h2>
+                 <h2>{{data.hotMatch.user.displayName}}'s Top 10 Songs</h2>
                  <div class="song-grid-container">
                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.0.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.0.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">{{hotMatch.songs.0.songName}}</p>
-                             <p class="song-artist">{{hotMatch.songs.0.songArtists}}</p>
+                             <p class="song-title">{{data.hotMatch.songs.0.songName}}</p>
+                             <p class="song-artist">{{data.hotMatch.songs.0.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.1.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.1.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">{{hotMatch.songs.1.songName}}</p>
-                             <p class="song-artist">{{hotMatch.songs.1.songArtists}}</p>
+                             <p class="song-title">{{data.hotMatch.songs.1.songName}}</p>
+                             <p class="song-artist">{{data.hotMatch.songs.1.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.2.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.2.songPicture}}" class="song-pic">
                          <div class="song-info">
-                             <p class="song-title">{{hotMatch.songs.2.songName}}</p>
-                             <p class="song-artist">{{hotMatch.songs.2.songArtists}}</p>
+                             <p class="song-title">{{data.hotMatch.songs.2.songName}}</p>
+                             <p class="song-artist">{{data.hotMatch.songs.2.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.3.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.3.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.3.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.3.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.3.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.3.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.4.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.4.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.4.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.4.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.4.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.4.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.5.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.5.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.5.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.5.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.5.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.5.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.6.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.6.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.6.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.6.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.6.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.6.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.7.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.7.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.7.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.7.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.7.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.7.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.8.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.8.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.8.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.8.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.8.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.8.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item">
-                         <img src="{{hotMatch.songs.9.songPicture}}" class="song-pic">
+                         <img src="{{data.hotMatch.songs.9.songPicture}}" class="song-pic">
                          <div class="song-info">
-                          <p class="song-title">{{hotMatch.songs.9.songName}}</p>
-                          <p class="song-artist">{{hotMatch.songs.9.songArtists}}</p>
+                          <p class="song-title">{{data.hotMatch.songs.9.songName}}</p>
+                          <p class="song-artist">{{data.hotMatch.songs.9.songArtists}}</p>
                          </div>
                      </div>
                  </div>
                  <a href="#" id="profile-button" class="spotify-button">CREATE PLAYLIST</a>
              </div>
               <div class="section">
-                 <h2>Top Artists You Have in Common</h2>
+                 <h2>{{data.hotMatch.user.displayName}}'s Top Artists</h2>
                  <div class="artist-grid-container">
                      <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet" />
                      <div class="artist-item">
-                         <img src="{{hotMatch.artists.0.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{hotMatch.artists.0.artistName}}</p>
+                         <img src="{{data.hotMatch.artists.0.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.hotMatch.artists.0.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="{{hotMatch.artists.1.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{hotMatch.artists.1.artistName}}</p>
+                         <img src="{{data.hotMatch.artists.1.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.hotMatch.artists.1.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="{{hotMatch.artists.2.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{hotMatch.artists.2.artistName}}</p>
+                         <img src="{{data.hotMatch.artists.2.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.hotMatch.artists.2.artistName}}</p>
                      </div>
                  </div>
              </div>
@@ -175,124 +175,124 @@
          <div class="cold">
              <img class="icon" src="images/ice.png">
              <p class="subheading" id="cold-text">COLDEST MATCH</p>
-             <p class="match">{{coldPercentMatch}}% FIT</p>
+             <p class="match">{{data.coldPercentMatch}}% FIT</p>
               <div class="square">
-                 <img class="profile-pic" alt="profile" src="{{coldMatch.user.profilePic}}">
+                 <img class="profile-pic" alt="profile" src="{{data.coldMatch.user.profilePic}}">
              </div>
-              <a href="#" id="profile-button" class="spotify-button">{{coldMatch.user.displayName}}</a>
+              <a href="#" id="profile-button" class="spotify-button">{{data.coldMatch.user.displayName}}</a>
               <div class="section">
                  <h2 id="cold-text">How Your Top Genres Compare</h2>
                  <div class="compare-genres">
                      <div class="prof-left">
-                         <img class="profile-pic-sm" src="images/man.jpg">
+                         <img class="profile-pic-sm" src="{{user.user.profilePic}}">
                      </div>
                      <div class="genre-grid-container">
-                         <div class="genre-item" id="green">1 ⋅ POP</div>
-                         <div class="genre-item" id="green">1 ⋅ POP</div>
-                         <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
-                         <div class="genre-item" id="green">2 ⋅ INDIE R&B</div>
-                         <div class="genre-item" id="red">3 ⋅ POP RAP</div>
-                         <div class="genre-item" id="yellow">3 ⋅ DANCE POP</div>
-                         <div class="genre-item" id="red">4 ⋅ MODERN ROCK</div>
-                         <div class="genre-item" id="red">4 ⋅ INDIE</div>
-                         <div class="genre-item" id="yellow">5 ⋅ DANCE POP</div>
-                         <div class="genre-item" id="red">5 ⋅ RAP</div>
+                         <div class="genre-item" id="green">1 ⋅ {{user.genres.[0]}}</div>
+                         <div class="genre-item" id="green">1 ⋅ {{data.coldMatch.genres.[0]}}</div>
+                         <div class="genre-item" id="green">2 ⋅ {{user.genres.[1]}}</div>
+                         <div class="genre-item" id="green">2 ⋅ {{data.coldMatch.genres.[1]}}</div>
+                         <div class="genre-item" id="red">3 ⋅ {{user.genres.[2]}}</div>
+                         <div class="genre-item" id="yellow">3 ⋅ {{data.coldMatch.genres.[2]}}</div>
+                         <div class="genre-item" id="red">4 ⋅ {{user.genres.[3]}}</div>
+                         <div class="genre-item" id="red">4 ⋅ {{data.coldMatch.genres.[3]}}</div>
+                         <div class="genre-item" id="yellow">5 ⋅ {{user.genres.[4]}}</div>
+                         <div class="genre-item" id="red">5 ⋅ {{data.coldMatch.genres.[4]}}</div>
                      </div>
                      <div class="prof-right">
-                         <img class="profile-pic-sm" src="{{coldMatch.user.profilePic}}">
+                         <img class="profile-pic-sm" src="{{data.coldMatch.user.profilePic}}">
                      </div>
                  </div>
              </div>
               <div class="section">
-                 <h2 id="cold-text">{{coldMatch.user.displayName}}'s Top 10 Songs</h2>
+                 <h2 id="cold-text">{{data.coldMatch.user.displayName}}'s Top 10 Songs</h2>
                  <div class="song-grid-container">
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.0.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.0.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                            <p class="song-title">{{coldMatch.songs.0.songName}}</p>
-                            <p class="song-artist">{{coldMatch.songs.0.songArtists}}</p>
+                            <p class="song-title">{{data.coldMatch.songs.0.songName}}</p>
+                            <p class="song-artist">{{data.coldMatch.songs.0.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.1.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.1.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.1.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.1.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.1.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.1.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.2.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.2.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.2.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.2.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.2.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.2.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.3.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.3.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.3.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.3.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.3.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.3.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.4.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.4.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.4.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.4.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.4.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.4.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.5.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.5.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.5.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.5.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.5.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.5.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.6.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.6.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.6.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.6.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.6.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.6.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.7.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.7.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.7.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.7.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.7.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.7.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.8.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.8.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.8.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.8.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.8.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.8.songArtists}}</p>
                          </div>
                      </div>
                      <div class="song-item" id="cold-card">
-                         <img src="{{coldMatch.songs.9.songPicture}}" class="song-pic">
+                         <img src="{{data.coldMatch.songs.9.songPicture}}" class="song-pic">
                          <div class="song-info" id="cold-text-black">
-                          <p class="song-title">{{coldMatch.songs.9.songName}}</p>
-                          <p class="song-artist">{{coldMatch.songs.9.songArtists}}</p>
+                          <p class="song-title">{{data.coldMatch.songs.9.songName}}</p>
+                          <p class="song-artist">{{data.coldMatch.songs.9.songArtists}}</p>
                          </div>
                      </div>
                  </div>
                  <a href="#" id="profile-button" class="spotify-button">CREATE PLAYLIST</a>
              </div>
               <div class="section">
-                 <h2 id="cold-text">Top Artists You Have in Common</h2>
+                 <h2 id="cold-text">{{data.coldMatch.user.displayName}}'s Top Artists</h2>
                  <div class="artist-grid-container">
                      <div class="artist-item">
-                         <img src="{{coldMatch.artists.0.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{coldMatch.artists.0.artistName}}</p>
+                         <img src="{{data.coldMatch.artists.0.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.coldMatch.artists.0.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="{{coldMatch.artists.1.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{coldMatch.artists.1.artistName}}</p>
+                         <img src="{{data.coldMatch.artists.1.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.coldMatch.artists.1.artistName}}</p>
                      </div>
                      <div class="artist-item">
-                         <img src="{{coldMatch.artists.2.artistPic}}" class="artist-pic">
-                         <p class="artist-name">{{coldMatch.artists.2.artistName}}</p>
+                         <img src="{{data.coldMatch.artists.2.artistPic}}" class="artist-pic">
+                         <p class="artist-name">{{data.coldMatch.artists.2.artistName}}</p>
                      </div>
                  </div>
              </div>
@@ -371,9 +371,7 @@
               if (data.success) {
                 console.log(data); //data is dictionary => 
                 hotPercentMatch = data.data.hotPercentMatch;
-                console.log(hotPercentMatch);
-                userProfilePlaceholder.innerHTML = userProfileTemplate(data.data);
-                console.log(userProfilePlaceholder.innerHTML);
+                userProfilePlaceholder.innerHTML = userProfileTemplate(data);
 
                 return;
               }
