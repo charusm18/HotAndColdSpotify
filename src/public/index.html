@@ -17,6 +17,8 @@
   </head>
 
   <body>
+    
+    <!-- before getting authentication from Spotify login -->
     <div class="container">
       <div id="login">
         <h1>This is an example of the Authorization Code flow</h1>
@@ -31,6 +33,8 @@
       </div>
     </div>
 
+
+    <!-- page that loads after getting authentication from spotify -->
     <script id="user-profile-template" type="text/x-handlebars-template">
       <h1>Logged in as {{display_name}}</h1>
       <div class="media">
@@ -53,6 +57,7 @@
       </div>
     </script>
 
+    <!-- prints out the access tokens -->
     <script id="oauth-template" type="text/x-handlebars-template">
       <h2>oAuth info</h2>
       <dl class="dl-horizontal">
@@ -79,7 +84,8 @@
           }
           return hashParams;
         }
-
+        
+        // gets a json of the user info
         var userProfileSource = document.getElementById('user-profile-template').innerHTML,
             userProfileTemplate = Handlebars.compile(userProfileSource),
             userProfilePlaceholder = document.getElementById('user-profile');
