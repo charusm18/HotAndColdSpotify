@@ -7,12 +7,12 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const { json, Router } = require('express');
 
-var propertiesReader = require('properties-reader');
-var properties = propertiesReader('deploy.txt');
+// var propertiesReader = require('properties-reader');
+// var properties = propertiesReader('deploy.txt');
 
 var client_id = ''; // Your client id
 var client_secret = ''; // Your secret
-var redirect_uri = 'https://charusm18.github.io/HotAndColdSpotify/docs/public/callback'; // Your redirect uri
+var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
 
 var user_info = {}; //dictionary that holds user information
 var artist_list = []; //list of dictionaries that holds a list of a user's top artists and info about that artists
@@ -41,7 +41,7 @@ var stateKey = 'spotify_auth_state';
 var app = express();
 
 
-app.use(express.static(__dirname + '/public'))
+app.use(express.static(__dirname + '/docs'))
   .use(cors())
   .use(cookieParser());
 
