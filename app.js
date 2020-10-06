@@ -10,9 +10,11 @@ const { json, Router } = require('express');
 // var propertiesReader = require('properties-reader');
 // var properties = propertiesReader('deploy.txt');
 
-var client_id = ''; // Your client id
-var client_secret = ''; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var client_id = process.env.client_id; // Your client id
+var client_secret = process.env.client_secret; // Your secret
+
+var port = process.env.PORT || 8888;
+var redirect_uri = 'http://localhost:${port}/callback'; // Your redirect uri
 
 var user_info = {}; //dictionary that holds user information
 var artist_list = []; //list of dictionaries that holds a list of a user's top artists and info about that artists
@@ -245,5 +247,5 @@ app.post('/dictionary-matches', async function (req, res) {
 
 });
 
-app.listen(8888);
+app.listen(process.env.PORT || 8888);
 
