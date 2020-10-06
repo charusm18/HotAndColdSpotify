@@ -17,7 +17,7 @@ var client_secret = process.env.client_secret; // Your secret
 // var client_secret = '2971e26e194e49128631cc5bf66f55f1'; // Your secret
 
 var port = process.env.PORT || 8888;
-var redirect_uri = 'http://localhost:' + port + '/callback'; // Your redirect uri
+var redirect_uri = 'https://hotandcoldspotify.herokuapp.com/callback'; // Your redirect uri
 console.log("Port: ", port);
 
 var user_info = {}; //dictionary that holds user information
