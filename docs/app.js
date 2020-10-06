@@ -7,6 +7,9 @@ var querystring = require('querystring');
 var cookieParser = require('cookie-parser');
 const { json, Router } = require('express');
 
+var propertiesReader = require('properties-reader');
+var properties = propertiesReader('deploy.txt');
+
 var client_id = ''; // Your client id
 var client_secret = ''; // Your secret
 var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
@@ -125,7 +128,13 @@ app.get('/callback', function (req, res) {
         //populates the user_info with relavent information from JSON
         request.get(options, function (error, response, body) {
           user_info["displayName"] = body["display_name"];
-          user_info["profilePic"] = body["images"][0]["url"];
+          
+          if(body["images"][0] == undefined)
+            user_info["profilePic"] = "images/no_profile.png";
+          else
+            user_info["profilePic"] = body["images"][0]["url"];
+
+
           user_info["userUrl"] = body["external_urls"]["spotify"];
         });
 
