@@ -12,7 +12,7 @@ var properties = propertiesReader('deploy.txt');
 
 var client_id = ''; // Your client id
 var client_secret = ''; // Your secret
-var redirect_uri = 'http://localhost:8888/callback'; // Your redirect uri
+var redirect_uri = 'https://charusm18.github.io/HotAndColdSpotify/docs/public/callback'; // Your redirect uri
 
 var user_info = {}; //dictionary that holds user information
 var artist_list = []; //list of dictionaries that holds a list of a user's top artists and info about that artists
