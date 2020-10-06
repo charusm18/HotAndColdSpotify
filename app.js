@@ -14,7 +14,7 @@ var client_id = process.env.client_id; // Your client id
 var client_secret = process.env.client_secret; // Your secret
 
 var port = process.env.PORT || 8888;
-var redirect_uri = 'http://localhost:${port}/callback'; // Your redirect uri
+var redirect_uri = `http://localhost:${port}/callback`; // Your redirect uri
 
 var user_info = {}; //dictionary that holds user information
 var artist_list = []; //list of dictionaries that holds a list of a user's top artists and info about that artists
